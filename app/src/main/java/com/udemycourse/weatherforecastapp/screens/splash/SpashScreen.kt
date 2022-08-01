@@ -19,9 +19,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.udemycourse.weatherforecastapp.ui.theme.backgroundColor
 import com.udemycourse.weatherforecastapp.R
+import com.udemycourse.weatherforecastapp.navigation.WeatherScreens
 import com.udemycourse.weatherforecastapp.ui.theme.textColor
 import kotlinx.coroutines.delay
 
@@ -31,7 +31,7 @@ fun SplashScreen(navController: NavController) {
         mutableStateOf(false)
     }
     val offSet by animateDpAsState(
-            targetValue = if (animate) 0.dp else 100.dp,
+        targetValue = if (animate) 0.dp else 100.dp,
         animationSpec = tween(
             durationMillis = 1000
         )
@@ -47,6 +47,7 @@ fun SplashScreen(navController: NavController) {
     LaunchedEffect(key1 = true) {
         animate = true
         delay(3000L)
+        navController.navigate(route = WeatherScreens.HomeScreen.name)
     }
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -58,7 +59,9 @@ fun SplashScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Surface(
-                modifier = Modifier.size(300.dp).alpha(alpha),
+                modifier = Modifier
+                    .size(300.dp)
+                    .alpha(alpha),
                 shape = CircleShape,
                 color = MaterialTheme.colors.backgroundColor,
                 border = BorderStroke(width = 2.dp, color = Color.LightGray)
@@ -68,12 +71,14 @@ fun SplashScreen(navController: NavController) {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Image(
-                        modifier = Modifier.size(100.dp).offset(y = offSet),
+                        modifier = Modifier
+                            .size(100.dp)
+                            .offset(y = offSet),
                         painter = painterResource(id = getLogo()),
                         contentDescription = "Sunny Icon",
                     )
                     Text(
-                        modifier = Modifier.offset(y=offSet),
+                        modifier = Modifier.offset(y = offSet),
                         text = "Find the Sun?",
                         style = MaterialTheme.typography.h5,
                         color = MaterialTheme.colors.textColor

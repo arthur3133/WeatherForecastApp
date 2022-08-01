@@ -16,3 +16,7 @@ val Colors.backgroundColor: Color
 val Colors.textColor: Color
     @Composable
     get() = if (isLight) Color.Black else Color.White
+
+val Colors.circularProgressIndicatorColor: Color
+    @Composable
+    get() = if (isLight) Color.Black else Color.White
