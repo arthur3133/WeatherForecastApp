@@ -10,13 +10,17 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.udemycourse.weatherforecastapp.navigation.WeatherNavigation
 import com.udemycourse.weatherforecastapp.ui.theme.WeatherForecastAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             WeatherForecastAppTheme {
+                WeatherNavigation()
             }
         }
     }
