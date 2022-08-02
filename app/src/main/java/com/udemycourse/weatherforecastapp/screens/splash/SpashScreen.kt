@@ -47,7 +47,11 @@ fun SplashScreen(navController: NavController) {
     LaunchedEffect(key1 = true) {
         animate = true
         delay(3000L)
-        navController.navigate(route = WeatherScreens.HomeScreen.name)
+        navController.navigate(route = WeatherScreens.HomeScreen.name) {
+            popUpTo(WeatherScreens.SplashScreen.name) {
+                inclusive = true
+            }
+        }
     }
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -91,5 +95,5 @@ fun SplashScreen(navController: NavController) {
 
 @Composable
 fun getLogo(): Int {
-    return if (isSystemInDarkTheme()) R.drawable.sunny_light else R.drawable.sunny_dark
+    return if (isSystemInDarkTheme()) R.drawable.ic_sunny_light else R.drawable.ic_sunny_dark
 }

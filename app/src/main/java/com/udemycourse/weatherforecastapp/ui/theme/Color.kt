@@ -20,3 +20,7 @@ val Colors.textColor: Color
 val Colors.circularProgressIndicatorColor: Color
     @Composable
     get() = if (isLight) Color.Black else Color.White
+
+val Colors.tintColor: Color
+    @Composable
+    get() = if (isLight) Color.Black else Color.White

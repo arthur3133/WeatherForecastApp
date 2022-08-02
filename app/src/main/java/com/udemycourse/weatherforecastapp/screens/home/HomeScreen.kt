@@ -3,10 +3,7 @@ package com.udemycourse.weatherforecastapp.screens.home
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.produceState
@@ -42,7 +39,16 @@ fun HomeScreen(
                 )
             }
         } else {
-
+                Scaffold(
+                    topBar = {
+                        WeatherTopAppBar(
+                            city = weatherData.value.data?.city?.name,
+                            country = weatherData.value.data?.city?.country)
+                    },
+                    content = {
+                        WeatherContent(weatherData = weatherData.value.data)
+                    }
+                )
         }
     }
 }
