@@ -11,6 +11,8 @@ object Constants {
 
     const val API_KEY = "ed60fcfbd110ee65c7150605ea8aceea"
 
+    const val defaultCity = "Ahmedabad"
+
     fun formatDate(timeStamp: Int): String {
         val sdf = SimpleDateFormat("EEE, MMM d")
         val date = Date(timeStamp.toLong() * 1000)

@@ -24,3 +24,15 @@ val Colors.circularProgressIndicatorColor: Color
 val Colors.tintColor: Color
     @Composable
     get() = if (isLight) Color.Black else Color.White
+
+val Colors.cursorColor: Color
+    @Composable
+    get() = if (isLight) Color.Black else Color.White
+
+val Colors.focusedLabelColor: Color
+    @Composable
+    get() = if (isLight) Color.Black else Color.White
+
+val Colors.focusedIndicatorColor: Color
+    @Composable
+    get() = if (isLight) Color.Black else Color.White

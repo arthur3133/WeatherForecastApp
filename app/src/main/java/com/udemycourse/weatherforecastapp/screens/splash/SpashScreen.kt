@@ -23,10 +23,13 @@ import com.udemycourse.weatherforecastapp.ui.theme.backgroundColor
 import com.udemycourse.weatherforecastapp.R
 import com.udemycourse.weatherforecastapp.navigation.WeatherScreens
 import com.udemycourse.weatherforecastapp.ui.theme.textColor
+import com.udemycourse.weatherforecastapp.utils.Constants.defaultCity
 import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen(navController: NavController) {
+fun SplashScreen(
+    navController: NavController
+) {
     var animate by remember {
         mutableStateOf(false)
     }
@@ -46,8 +49,8 @@ fun SplashScreen(navController: NavController) {
 
     LaunchedEffect(key1 = true) {
         animate = true
-        delay(3000L)
-        navController.navigate(route = WeatherScreens.HomeScreen.name) {
+        delay(2000L)
+        navController.navigate(route = WeatherScreens.HomeScreen.name+"/$defaultCity") {
             popUpTo(WeatherScreens.SplashScreen.name) {
                 inclusive = true
             }
