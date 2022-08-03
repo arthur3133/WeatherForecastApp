@@ -7,7 +7,6 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.udemycourse.weatherforecastapp.components.AppBar
 import com.udemycourse.weatherforecastapp.ui.theme.backgroundColor
 
 @Composable
@@ -18,7 +17,7 @@ fun SearchScreen(navController: NavController) {
     ) {
         Scaffold(
             topBar = {
-                AppBar(navController = navController, title = "Search")
+                SearchTopAppBar(navController = navController)
             },
             content = {
                 SearchContent(navController = navController)
