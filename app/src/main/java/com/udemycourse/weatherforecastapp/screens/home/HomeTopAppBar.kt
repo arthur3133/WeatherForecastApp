@@ -89,13 +89,22 @@ fun ShowDropDownMenu(expanded: MutableState<Boolean>, navController: NavControll
             onDismissRequest = { expanded.value = false },
             modifier = Modifier.background(MaterialTheme.colors.backgroundColor)
         ) {
-            DropdownMenuItem(onClick = { expanded.value = false }) {
+            DropdownMenuItem(onClick = {
+                expanded.value = false
+                navController.navigate(WeatherScreens.FavouriteScreen.name)
+            }) {
                 MoreOption(title = "Favorite", icon = Icons.Default.Favorite)
             }
-            DropdownMenuItem(onClick = { expanded.value = false }) {
+            DropdownMenuItem(onClick = {
+                expanded.value = false
+                navController.navigate(WeatherScreens.AboutScreen.name)
+            }) {
                 MoreOption(title = "About", icon = Icons.Default.Info)
             }
-            DropdownMenuItem(onClick = { expanded.value = false }) {
+            DropdownMenuItem(onClick = {
+                expanded.value = false
+                navController.navigate(WeatherScreens.SettingsScreen.name)
+            }) {
                 MoreOption(title = "Settings", icon = Icons.Default.Settings)
             }
         }

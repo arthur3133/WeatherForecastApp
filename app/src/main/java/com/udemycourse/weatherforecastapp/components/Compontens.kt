@@ -3,14 +3,17 @@ package com.udemycourse.weatherforecastapp.components
 import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.udemycourse.weatherforecastapp.ui.theme.backgroundColor
 import com.udemycourse.weatherforecastapp.ui.theme.textColor
 import com.udemycourse.weatherforecastapp.ui.theme.tintColor
 
@@ -37,4 +40,30 @@ fun MoreOption(
             color = MaterialTheme.colors.textColor
         )
     }
+}
+
+@Composable
+fun AppBar(navController: NavController, title: String) {
+    TopAppBar(
+        title = {
+            Text(
+                text = title,
+                color = MaterialTheme.colors.textColor,
+                fontWeight = FontWeight.Bold
+            )
+        },
+        backgroundColor = MaterialTheme.colors.backgroundColor,
+        elevation = AppBarDefaults.TopAppBarElevation,
+        navigationIcon = {
+            IconButton(onClick = {
+                navController.popBackStack()
+            }) {
+                Icon(
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = "arrow_back_icon",
+                    tint = MaterialTheme.colors.tintColor
+                )
+            }
+        }
+    )
 }
