@@ -1,6 +1,5 @@
 package com.udemycourse.weatherforecastapp.screens.search
 
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -14,10 +13,12 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.udemycourse.weatherforecastapp.R
 import com.udemycourse.weatherforecastapp.navigation.WeatherScreens
 import com.udemycourse.weatherforecastapp.ui.theme.*
 
@@ -37,7 +38,10 @@ fun SearchContent(
 
     val context = LocalContext.current
     Column(
-        modifier = Modifier.fillMaxSize().background(MaterialTheme.colors.backgroundColor).padding(12.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colors.backgroundColor)
+            .padding(12.dp),
         verticalArrangement = Arrangement.Top
     ) {
         OutlinedTextField(
@@ -47,10 +51,10 @@ fun SearchContent(
             },
             modifier = Modifier.fillMaxWidth(),
             label = {
-                Text(text = "City")
+                Text(text = stringResource(id = R.string.city))
             },
             placeholder = {
-                Text(text = "City")
+                Text(text = stringResource(id = R.string.city))
             },
             singleLine = true,
             maxLines = 1,

@@ -6,7 +6,9 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import com.udemycourse.weatherforecastapp.R
 import com.udemycourse.weatherforecastapp.components.AppBar
 import com.udemycourse.weatherforecastapp.ui.theme.backgroundColor
 import com.udemycourse.weatherforecastapp.viewmodel.SettingsViewModel
@@ -19,7 +21,7 @@ fun SettingsScreen(navController: NavController, settingsViewModel: SettingsView
     ) {
         Scaffold(
             topBar = {
-                AppBar(navController = navController, title = "Settings")
+                AppBar(navController = navController, title = stringResource(id = R.string.settings))
             },
             content = {
                 SettingsContent(settingsViewModel = settingsViewModel)

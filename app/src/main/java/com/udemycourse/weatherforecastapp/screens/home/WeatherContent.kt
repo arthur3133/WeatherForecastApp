@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
@@ -80,7 +81,7 @@ fun WeatherContent(weatherData: Weather?, isImperial: Boolean) {
         Divider()
         SunRiseAndSunSetRow(weatherData = weatherData)
         Text(
-            text = "This Week",
+            text = stringResource(id = R.string.this_week),
             style = MaterialTheme.typography.subtitle1,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colors.textColor
@@ -101,7 +102,7 @@ fun WeatherImage(imageUrl: String, imageSize: Dp) {
             .data(imageUrl)
             .crossfade(true)
             .build(),
-        contentDescription = "image",
+        contentDescription = stringResource(id = R.string.weather_image),
         modifier = Modifier.size(imageSize)
     )
 }
@@ -120,7 +121,7 @@ fun HumidityWindPressureRow(weatherData: Weather?, isImperial: Boolean) {
         ) {
             Icon(
                 painter = painterResource(id = getHumidityIcon()), 
-                contentDescription = "humidity_icon",
+                contentDescription = stringResource(id = R.string.humidity_icon),
                 modifier = Modifier.size(24.dp)
             )
             Text(
@@ -135,7 +136,7 @@ fun HumidityWindPressureRow(weatherData: Weather?, isImperial: Boolean) {
         ) {
             Icon(
                 painter = painterResource(id = getPressureIcon()),
-                contentDescription = "pressure_icon",
+                contentDescription = stringResource(id = R.string.pressure_icon),
                 modifier = Modifier.size(24.dp)
             )
             Text(
@@ -150,7 +151,7 @@ fun HumidityWindPressureRow(weatherData: Weather?, isImperial: Boolean) {
         ) {
             Icon(
                 painter = painterResource(id = getWindIcon()),
-                contentDescription = "wind_icon",
+                contentDescription = stringResource(id = R.string.wind_icon),
                 modifier = Modifier.size(24.dp)
             )
             Text(
@@ -192,7 +193,7 @@ fun SunRiseAndSunSetRow(weatherData: Weather?) {
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.sunrise),
-                contentDescription = "sunrise_icon",
+                contentDescription = stringResource(id = R.string.sunrise_icon),
                 modifier = Modifier.size(24.dp)
             )
             Text(
@@ -213,7 +214,7 @@ fun SunRiseAndSunSetRow(weatherData: Weather?) {
             )
             Icon(
                 painter = painterResource(id = R.drawable.sunset),
-                contentDescription = "sunset_icon",
+                contentDescription = stringResource(id = R.string.sunset_icon),
                 modifier = Modifier.size(24.dp)
             )
         }

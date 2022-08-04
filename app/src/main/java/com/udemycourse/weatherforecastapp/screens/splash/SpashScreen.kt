@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.udemycourse.weatherforecastapp.ui.theme.backgroundColor
@@ -82,11 +83,11 @@ fun SplashScreen(
                             .size(100.dp)
                             .offset(y = offSet),
                         painter = painterResource(id = getLogo()),
-                        contentDescription = "Sunny Icon",
+                        contentDescription = stringResource(id = R.string.sunny_icon),
                     )
                     Text(
                         modifier = Modifier.offset(y = offSet),
-                        text = "Find the Sun?",
+                        text = stringResource(id = R.string.splash_title),
                         style = MaterialTheme.typography.h5,
                         color = MaterialTheme.colors.textColor
                     )

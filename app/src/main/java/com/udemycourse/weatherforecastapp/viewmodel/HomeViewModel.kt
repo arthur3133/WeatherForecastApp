@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.udemycourse.weatherforecastapp.data.DataOrException
 import com.udemycourse.weatherforecastapp.model.Weather
 import com.udemycourse.weatherforecastapp.repository.WeatherForecastRepository
-import com.udemycourse.weatherforecastapp.utils.Constants.defaultCity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

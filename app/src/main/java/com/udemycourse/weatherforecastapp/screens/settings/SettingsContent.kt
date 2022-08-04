@@ -1,6 +1,5 @@
 package com.udemycourse.weatherforecastapp.screens.settings
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -10,8 +9,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.udemycourse.weatherforecastapp.R
 import com.udemycourse.weatherforecastapp.model.Unit
 import com.udemycourse.weatherforecastapp.ui.theme.backgroundColor
 import com.udemycourse.weatherforecastapp.ui.theme.textColor
@@ -30,13 +31,12 @@ fun SettingsContent(settingsViewModel: SettingsViewModel) {
             mutableStateOf(false)
         }
         val allUnits = settingsViewModel.allUnits.collectAsState().value
-        val defaultUnit = if (allUnits.isNullOrEmpty()) "Imperial (F)" else allUnits[0].unit
+        val defaultUnit = if (allUnits.isEmpty()) "Imperial (F)" else allUnits[0].unit
         var choiceState by remember {
             mutableStateOf(defaultUnit)
         }
-        Log.d("ChoiceState", choiceState)
         Text(
-            text = "Change Units of Measurement",
+            text = stringResource(id = R.string.change_units_of_measurement),
             color = MaterialTheme.colors.textColor,
             style = MaterialTheme.typography.h5,
         )
@@ -79,7 +79,7 @@ fun SettingsContent(settingsViewModel: SettingsViewModel) {
             shape = RoundedCornerShape(34.dp)
         ) {
             Text(
-                text = "Save",
+                text = stringResource(id = R.string.save),
                 color = Color.Black,
                 modifier = Modifier.padding(4.dp),
                 fontSize = 17.sp

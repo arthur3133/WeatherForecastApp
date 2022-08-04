@@ -6,7 +6,9 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import com.udemycourse.weatherforecastapp.R
 import com.udemycourse.weatherforecastapp.components.AppBar
 import com.udemycourse.weatherforecastapp.ui.theme.backgroundColor
 import com.udemycourse.weatherforecastapp.viewmodel.FavoriteViewModel
@@ -22,7 +24,7 @@ fun FavoriteScreen(
     ) {
         Scaffold(
             topBar = {
-                AppBar(navController = navController, title = "Favorite Cities")
+                AppBar(navController = navController, title = stringResource(id = R.string.favorite_cities))
             },
             content = {
                 FavoriteContent(favoriteViewModel = favoriteViewModel, navController = navController)

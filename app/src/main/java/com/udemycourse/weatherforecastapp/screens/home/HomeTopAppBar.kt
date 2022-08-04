@@ -1,6 +1,5 @@
 package com.udemycourse.weatherforecastapp.screens.home
 
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -11,9 +10,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.udemycourse.weatherforecastapp.R
 import com.udemycourse.weatherforecastapp.components.MoreOption
 import com.udemycourse.weatherforecastapp.model.Favorite
 import com.udemycourse.weatherforecastapp.ui.theme.backgroundColor
@@ -29,7 +30,7 @@ fun HomeTopAppBar(
     navController: NavController,
     favoriteViewModel: FavoriteViewModel
 ) {
-    var expanded = remember {
+    val expanded = remember {
         mutableStateOf(false)
     }
 
@@ -56,7 +57,7 @@ fun HomeTopAppBar(
             ) {
               Icon(
                   imageVector = Icons.Default.Search,
-                  contentDescription = "search_icon",
+                  contentDescription = stringResource(id = R.string.search_icon),
                   tint = MaterialTheme.colors.tintColor
               )
             }
@@ -65,7 +66,7 @@ fun HomeTopAppBar(
             }) {
                 Icon(
                     imageVector = Icons.Default.MoreVert,
-                    contentDescription = "more_option_icon",
+                    contentDescription = stringResource(id = R.string.more_option_icon),
                     tint = MaterialTheme.colors.tintColor
                 )
             }
@@ -74,7 +75,7 @@ fun HomeTopAppBar(
             val favoriteList = favoriteViewModel.allFavorite.collectAsState().value.filter { item ->
                 (item.city == city)
             }
-            if (favoriteList.isNullOrEmpty()) {
+            if (favoriteList.isEmpty()) {
                 IconButton(onClick = {
                     favoriteViewModel.addFavorite(
                         Favorite(
@@ -86,7 +87,7 @@ fun HomeTopAppBar(
                 }) {
                     Icon(
                         imageVector = Icons.Default.FavoriteBorder,
-                        contentDescription = "favorite_icon",
+                        contentDescription = stringResource(id = R.string.favorite_icon),
                         tint = MaterialTheme.colors.tintColor
                     )
                 }
@@ -102,7 +103,7 @@ fun HomeTopAppBar(
                 }) {
                     Icon(
                         imageVector = Icons.Default.Favorite,
-                        contentDescription = "favorite_icon",
+                        contentDescription = stringResource(id = R.string.favorite_icon),
                         tint = MaterialTheme.colors.tintColor
                     )
                 }
@@ -127,21 +128,33 @@ fun ShowDropDownMenu(expanded: MutableState<Boolean>, navController: NavControll
         ) {
             DropdownMenuItem(onClick = {
                 expanded.value = false
-                navController.navigate(WeatherScreens.FavouriteScreen.name)
+                navController.navigate(WeatherScreens.FavouriteScreen.name) {
+                    popUpTo(WeatherScreens.HomeScreen.name) {
+                        inclusive = true
+                    }
+                }
             }) {
-                MoreOption(title = "Favorite", icon = Icons.Default.Favorite)
+                MoreOption(title = stringResource(id = R.string.favorite), icon = Icons.Default.Favorite)
             }
             DropdownMenuItem(onClick = {
                 expanded.value = false
-                navController.navigate(WeatherScreens.AboutScreen.name)
+                navController.navigate(WeatherScreens.AboutScreen.name) {
+                    popUpTo(WeatherScreens.HomeScreen.name) {
+                        inclusive = true
+                    }
+                }
             }) {
-                MoreOption(title = "About", icon = Icons.Default.Info)
+                MoreOption(title = stringResource(id = R.string.about), icon = Icons.Default.Info)
             }
             DropdownMenuItem(onClick = {
                 expanded.value = false
-                navController.navigate(WeatherScreens.SettingsScreen.name)
+                navController.navigate(WeatherScreens.SettingsScreen.name) {
+                    popUpTo(WeatherScreens.HomeScreen.name) {
+                        inclusive = true
+                    }
+                }
             }) {
-                MoreOption(title = "Settings", icon = Icons.Default.Settings)
+                MoreOption(title = stringResource(id = R.string.settings), icon = Icons.Default.Settings)
             }
         }
     }

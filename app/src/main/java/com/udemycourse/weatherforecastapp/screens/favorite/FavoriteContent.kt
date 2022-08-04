@@ -15,10 +15,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.udemycourse.weatherforecastapp.R
 import com.udemycourse.weatherforecastapp.model.Favorite
 import com.udemycourse.weatherforecastapp.navigation.WeatherScreens
 import com.udemycourse.weatherforecastapp.ui.theme.backgroundColor
@@ -40,7 +42,7 @@ fun FavoriteContent(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "No Favorite City Added",
+                text = stringResource(id = R.string.no_favorite_city_added),
                 fontSize = 24.sp,
                 color = MaterialTheme.colors.textColor,
                 fontWeight = FontWeight.Bold
@@ -71,11 +73,11 @@ fun FavoriteRow(favorite: Favorite, favoriteViewModel: FavoriteViewModel, navCon
             .fillMaxWidth()
             .padding(10.dp)
             .clickable {
-                       navController.navigate(WeatherScreens.HomeScreen.name+"/${favorite.city}") {
-                           popUpTo(WeatherScreens.FavouriteScreen.name) {
-                               inclusive = true
-                           }
-                       }
+                navController.navigate(WeatherScreens.HomeScreen.name + "/${favorite.city}") {
+                    popUpTo(WeatherScreens.FavouriteScreen.name) {
+                        inclusive = true
+                    }
+                }
             },
         shape = CircleShape,
         elevation = 1.dp,
@@ -110,7 +112,7 @@ fun FavoriteRow(favorite: Favorite, favoriteViewModel: FavoriteViewModel, navCon
             }) {
                 Icon(
                     imageVector = Icons.Default.Delete,
-                    contentDescription = "delete_icon",
+                    contentDescription = stringResource(id = R.string.delete_icon),
                     tint = Color.Red.copy(alpha = 0.5f)
                 )
             }

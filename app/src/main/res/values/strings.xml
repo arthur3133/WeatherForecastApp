@@ -2,4 +2,26 @@
     <string name="app_name">WeatherForecastApp</string>
     <string name="app_version">Weather App v.0.1</string>
     <string name="api_used">Weather API by: https://openweathermap.org</string>
+    <string name="search_icon">search_icon</string>
+    <string name="more_option_icon">more_option_icon</string>
+    <string name="favorite_icon">favorite_icon</string>
+    <string name="favorite">Favorite</string>
+    <string name="about">About</string>
+    <string name="settings">Settings</string>
+    <string name="this_week">This Week</string>
+    <string name="weather_image">weather_image</string>
+    <string name="humidity_icon">humidity_icon</string>
+    <string name="pressure_icon">pressure_icon</string>
+    <string name="wind_icon">wind_icon</string>
+    <string name="sunrise_icon">sunrise_icon</string>
+    <string name="sunset_icon">sunset_icon</string>
+    <string name="search">Search</string>
+    <string name="city">City</string>
+    <string name="sunny_icon">sunny_icon</string>
+    <string name="splash_title">Find the Sun?</string>
+    <string name="no_favorite_city_added">No Favorite City Added</string>
+    <string name="delete_icon">delete_icon</string>
+    <string name="favorite_cities">Favorite Cities</string>
+    <string name="change_units_of_measurement">Change Units of Measurement</string>
+    <string name="save">Save</string>
 </resources>
