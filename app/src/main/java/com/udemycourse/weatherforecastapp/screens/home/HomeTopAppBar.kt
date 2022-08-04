@@ -33,10 +33,6 @@ fun HomeTopAppBar(
         mutableStateOf(false)
     }
 
-    var favoriteClicked by remember {
-        mutableStateOf(false)
-    }
-
     if (expanded.value) {
         ShowDropDownMenu(expanded = expanded, navController = navController)
     }
@@ -75,31 +71,41 @@ fun HomeTopAppBar(
             }
         },
         navigationIcon = {
-            IconButton(onClick = {
-                favoriteClicked = !favoriteClicked
-                if (favoriteClicked) {
+            val favoriteList = favoriteViewModel.allFavorite.collectAsState().value.filter { item ->
+                (item.city == city)
+            }
+            if (favoriteList.isNullOrEmpty()) {
+                IconButton(onClick = {
                     favoriteViewModel.addFavorite(
                         Favorite(
                             city = city!!,
                             country = country!!
                         )
                     )
-                    Toast.makeText(context,"Added $city", Toast.LENGTH_SHORT).show()
-                } else {
+                    Toast.makeText(context, "Added $city to favorites", Toast.LENGTH_SHORT).show()
+                }) {
+                    Icon(
+                        imageVector = Icons.Default.FavoriteBorder,
+                        contentDescription = "favorite_icon",
+                        tint = MaterialTheme.colors.tintColor
+                    )
+                }
+            } else {
+                IconButton(onClick = {
                     favoriteViewModel.deleteFavorite(
                         Favorite(
                             city = city!!,
                             country = country!!
                         )
                     )
-                    Toast.makeText(context,"Removed $city", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Removed $city from favorites", Toast.LENGTH_SHORT).show()
+                }) {
+                    Icon(
+                        imageVector = Icons.Default.Favorite,
+                        contentDescription = "favorite_icon",
+                        tint = MaterialTheme.colors.tintColor
+                    )
                 }
-            }) {
-                Icon(
-                    imageVector = if (favoriteClicked) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                    contentDescription = "favorite_icon",
-                    tint = MaterialTheme.colors.tintColor
-                )
             }
         }
     ) 

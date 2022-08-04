@@ -9,9 +9,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.udemycourse.weatherforecastapp.components.AppBar
 import com.udemycourse.weatherforecastapp.ui.theme.backgroundColor
+import com.udemycourse.weatherforecastapp.viewmodel.FavoriteViewModel
 
 @Composable
-fun FavoriteScreen(navController: NavController) {
+fun FavoriteScreen(
+    navController: NavController,
+    favoriteViewModel: FavoriteViewModel
+) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colors.backgroundColor
@@ -21,7 +25,7 @@ fun FavoriteScreen(navController: NavController) {
                 AppBar(navController = navController, title = "Favorite Cities")
             },
             content = {
-                FavoriteContent()
+                FavoriteContent(favoriteViewModel = favoriteViewModel, navController = navController)
             }
         )
     }

@@ -52,7 +52,7 @@ fun WeatherNavigation() {
         }
 
         composable(route = WeatherScreens.FavouriteScreen.name) {
-            FavoriteScreen(navController = navController)
+            FavoriteScreen(navController = navController, favoriteViewModel = favoriteViewModel)
         }
 
         composable(route = WeatherScreens.AboutScreen.name) {

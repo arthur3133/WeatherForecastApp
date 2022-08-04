@@ -65,14 +65,14 @@ fun WeatherContent(weatherData: Weather?) {
                     text = formatDecimal(weatherData.list[0].temp.day)+"º",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.ExtraBold,
-                    color = MaterialTheme.colors.textColor
+                    color = Color.Black
                 )
                 Text(
                     text = weatherData.list[0].weather[0].main,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.SemiBold,
                     fontStyle = FontStyle.Italic,
-                    color = MaterialTheme.colors.textColor
+                    color = Color.Black
                 )
             }
         }
@@ -238,18 +238,19 @@ fun WeatherDetailRow(weatherItem: WeatherItem) {
         ) {
             Text(
                 text = formatDate(weatherItem.dt).split(",")[0],
+                color = MaterialTheme.colors.textColor,
                 modifier = Modifier.padding(start = 6.dp)
             )
             WeatherImage(imageUrl = imageUrl, imageSize = 50.dp)
             Surface(
                 shape = CircleShape,
-                color = Color(0xFFFFC400)
+                color = Color(0xFFFFC400),
             ) {
                 Text(
                     text = weatherItem.weather[0].description,
                     modifier = Modifier.padding(4.dp),
-                    color = Color.Black,
-                    style = MaterialTheme.typography.caption
+                    style = MaterialTheme.typography.caption,
+                    color = Color.Black
                 )
             }
             Text(text = buildAnnotatedString {
