@@ -11,22 +11,22 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.udemycourse.weatherforecastapp.ui.theme.backgroundColor
 import com.udemycourse.weatherforecastapp.ui.theme.circularProgressIndicatorColor
-import com.udemycourse.weatherforecastapp.viewmodel.SharedViewModel
+import com.udemycourse.weatherforecastapp.viewmodel.HomeViewModel
 
 @Composable
 fun HomeScreen(
     navController: NavController,
-    sharedViewModel: SharedViewModel,
+    homeViewModel: HomeViewModel,
     city: String
 ) {
     LaunchedEffect(key1 = true) {
-        sharedViewModel.getWeatherData(city = city)
+        homeViewModel.getWeatherData(city = city)
     }
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colors.backgroundColor
     ) {
-        val weatherData = sharedViewModel.data
+        val weatherData = homeViewModel.data
         if (weatherData.value.loading == true) {
             Column(
                 verticalArrangement = Arrangement.Center,

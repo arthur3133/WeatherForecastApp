@@ -18,7 +18,7 @@ fun FavoriteScreen(navController: NavController) {
     ) {
         Scaffold(
             topBar = {
-                AppBar(navController = navController, title = "Favorite")
+                AppBar(navController = navController, title = "Favorite Cities")
             },
             content = {
                 FavoriteContent()

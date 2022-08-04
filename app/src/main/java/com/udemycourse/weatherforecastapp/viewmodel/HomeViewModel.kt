@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SharedViewModel @Inject constructor(private val repository: WeatherForecastRepository): ViewModel() {
+class HomeViewModel @Inject constructor(private val repository: WeatherForecastRepository): ViewModel() {
     val data: MutableState<DataOrException<Weather, Boolean, Exception>> =
         mutableStateOf(DataOrException(data = null, loading = true, e = null))
 

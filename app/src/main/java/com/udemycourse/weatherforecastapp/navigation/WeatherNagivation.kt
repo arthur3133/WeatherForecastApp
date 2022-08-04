@@ -1,6 +1,5 @@
 package com.udemycourse.weatherforecastapp.navigation
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
@@ -12,16 +11,14 @@ import com.udemycourse.weatherforecastapp.screens.about.AboutScreen
 import com.udemycourse.weatherforecastapp.screens.favorite.FavoriteScreen
 import com.udemycourse.weatherforecastapp.screens.home.HomeScreen
 import com.udemycourse.weatherforecastapp.screens.search.SearchScreen
-import com.udemycourse.weatherforecastapp.screens.settings.SettingsContent
 import com.udemycourse.weatherforecastapp.screens.settings.SettingsScreen
 import com.udemycourse.weatherforecastapp.screens.splash.SplashScreen
-import com.udemycourse.weatherforecastapp.utils.Constants.defaultCity
-import com.udemycourse.weatherforecastapp.viewmodel.SharedViewModel
+import com.udemycourse.weatherforecastapp.viewmodel.HomeViewModel
 
 @Composable
 fun WeatherNavigation() {
     val navController = rememberNavController()
-    val sharedViewModel: SharedViewModel = hiltViewModel()
+    val homeViewModel: HomeViewModel = hiltViewModel()
     NavHost(
         navController = navController, 
         startDestination = WeatherScreens.SplashScreen.name) {
@@ -41,7 +38,7 @@ fun WeatherNavigation() {
             val city = navBackStackEntry.arguments?.getString("city")
             HomeScreen(
                 navController = navController,
-                sharedViewModel = sharedViewModel,
+                homeViewModel = homeViewModel,
                 city = city!!
             )
         }
