@@ -18,11 +18,11 @@ class HomeViewModel @Inject constructor(private val repository: WeatherForecastR
     val data: MutableState<DataOrException<Weather, Boolean, Exception>> =
         mutableStateOf(DataOrException(data = null, loading = true, e = null))
 
-    fun getWeatherData(city: String) {
+    fun getWeatherData(city: String, unit: String) {
         try {
             data.value.loading = true
             viewModelScope.launch(Dispatchers.IO) {
-                data.value = repository.getWeatherData(city = city)
+                data.value = repository.getWeatherData(city = city, unit = unit)
                 if (data.value.data.toString().isNotEmpty())
                     data.value.loading = false
             }

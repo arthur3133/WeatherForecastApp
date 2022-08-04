@@ -34,7 +34,7 @@ import com.udemycourse.weatherforecastapp.model.WeatherItem
 import com.udemycourse.weatherforecastapp.utils.Constants.formatDateTime
 
 @Composable
-fun WeatherContent(weatherData: Weather?) {
+fun WeatherContent(weatherData: Weather?, isImperial: Boolean) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -76,7 +76,7 @@ fun WeatherContent(weatherData: Weather?) {
                 )
             }
         }
-        HumidityWindPressureRow(weatherData = weatherData)
+        HumidityWindPressureRow(weatherData = weatherData, isImperial = isImperial)
         Divider()
         SunRiseAndSunSetRow(weatherData = weatherData)
         Text(
@@ -107,7 +107,7 @@ fun WeatherImage(imageUrl: String, imageSize: Dp) {
 }
 
 @Composable
-fun HumidityWindPressureRow(weatherData: Weather?) {
+fun HumidityWindPressureRow(weatherData: Weather?, isImperial: Boolean) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -154,7 +154,7 @@ fun HumidityWindPressureRow(weatherData: Weather?) {
                 modifier = Modifier.size(24.dp)
             )
             Text(
-                text = "${weatherData!!.list[0].speed} mph",
+                text = "${weatherData!!.list[0].speed} " + if (isImperial) "mph" else "m/s",
                 color = MaterialTheme.colors.textColor,
                 style = MaterialTheme.typography.caption,
                 modifier = Modifier.padding(start = 4.dp)

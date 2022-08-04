@@ -3,7 +3,7 @@ package com.udemycourse.weatherforecastapp.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.udemycourse.weatherforecastapp.model.Favorite
-import com.udemycourse.weatherforecastapp.repository.FavoriteRepository
+import com.udemycourse.weatherforecastapp.repository.WeatherForecastDbRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,14 +12,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FavoriteViewModel @Inject constructor(private val favoriteRepository: FavoriteRepository): ViewModel() {
+class FavoriteViewModel @Inject constructor(private val weatherForecastDbRepository: WeatherForecastDbRepository): ViewModel() {
 
     private val _allFavorites = MutableStateFlow<List<Favorite>>(emptyList())
     val allFavorite: StateFlow<List<Favorite>> = _allFavorites
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            favoriteRepository.getAllFavorites().collect() { favoriteList ->
+            weatherForecastDbRepository.getAllFavorites().collect() { favoriteList ->
                 _allFavorites.value = favoriteList
             }
         }
@@ -27,13 +27,13 @@ class FavoriteViewModel @Inject constructor(private val favoriteRepository: Favo
 
     fun addFavorite(favorite: Favorite) {
         viewModelScope.launch(Dispatchers.IO) {
-            favoriteRepository.addFavorite(favorite = favorite)
+            weatherForecastDbRepository.addFavorite(favorite = favorite)
         }
     }
 
     fun deleteFavorite(favorite: Favorite) {
         viewModelScope.launch(Dispatchers.IO) {
-            favoriteRepository.deleteFavorite(favorite = favorite)
+            weatherForecastDbRepository.deleteFavorite(favorite = favorite)
         }
     }
 }

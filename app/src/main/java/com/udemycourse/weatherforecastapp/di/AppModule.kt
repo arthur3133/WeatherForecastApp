@@ -2,11 +2,10 @@ package com.udemycourse.weatherforecastapp.di
 
 import android.content.Context
 import androidx.room.Room
-import com.udemycourse.weatherforecastapp.data.FavoriteDao
-import com.udemycourse.weatherforecastapp.data.FavoriteDatabase
-import com.udemycourse.weatherforecastapp.model.Weather
+import com.udemycourse.weatherforecastapp.data.WeatherDao
+import com.udemycourse.weatherforecastapp.data.WeatherDatabase
 import com.udemycourse.weatherforecastapp.remote.WeatherApi
-import com.udemycourse.weatherforecastapp.repository.FavoriteRepository
+import com.udemycourse.weatherforecastapp.repository.WeatherForecastDbRepository
 import com.udemycourse.weatherforecastapp.repository.WeatherForecastRepository
 import com.udemycourse.weatherforecastapp.utils.Constants.BASE_URL
 import dagger.Module
@@ -38,21 +37,21 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideFavoriteDatabase(@ApplicationContext context: Context): FavoriteDatabase {
+    fun provideWeatherDatabase(@ApplicationContext context: Context): WeatherDatabase {
         return Room.databaseBuilder(
             context,
-            FavoriteDatabase::class.java,
-            "favorite_db"
+            WeatherDatabase::class.java,
+            "weather_forecast_db"
         ).build()
     }
 
     @Singleton
     @Provides
-    fun provideFavoriteDao(favoriteDatabase: FavoriteDatabase): FavoriteDao {
-        return favoriteDatabase.favoriteDao()
+    fun provideWeatherDao(weatherDatabase: WeatherDatabase): WeatherDao {
+        return weatherDatabase.weatherDao()
     }
 
     @Singleton
     @Provides
-    fun provideFavoriteRepository(favoriteDao: FavoriteDao) = FavoriteRepository(favoriteDao)
+    fun provideWeatherForecastDbRepository(weatherDao: WeatherDao) = WeatherForecastDbRepository(weatherDao)
 }

@@ -4,8 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
@@ -13,16 +12,25 @@ import com.udemycourse.weatherforecastapp.ui.theme.backgroundColor
 import com.udemycourse.weatherforecastapp.ui.theme.circularProgressIndicatorColor
 import com.udemycourse.weatherforecastapp.viewmodel.FavoriteViewModel
 import com.udemycourse.weatherforecastapp.viewmodel.HomeViewModel
+import com.udemycourse.weatherforecastapp.viewmodel.SettingsViewModel
 
 @Composable
 fun HomeScreen(
     navController: NavController,
     homeViewModel: HomeViewModel,
     favoriteViewModel: FavoriteViewModel,
+    settingsViewModel: SettingsViewModel,
     city: String
 ) {
+    val allUnits = settingsViewModel.allUnits.collectAsState().value
+    val unit = if (allUnits.isEmpty()) "imperial" else allUnits[0].unit.split(" ")[0].lowercase()
+
+    val isImperial by remember {
+        mutableStateOf(unit == "imperial")
+    }
+
     LaunchedEffect(key1 = true) {
-        homeViewModel.getWeatherData(city = city)
+        homeViewModel.getWeatherData(city = city, unit = unit)
     }
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -49,7 +57,7 @@ fun HomeScreen(
                         )
                     },
                     content = {
-                        WeatherContent(weatherData = weatherData.value.data)
+                        WeatherContent(weatherData = weatherData.value.data, isImperial = isImperial)
                     }
                 )
         }

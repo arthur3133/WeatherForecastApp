@@ -9,9 +9,10 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.udemycourse.weatherforecastapp.components.AppBar
 import com.udemycourse.weatherforecastapp.ui.theme.backgroundColor
+import com.udemycourse.weatherforecastapp.viewmodel.SettingsViewModel
 
 @Composable
-fun SettingsScreen(navController: NavController) {
+fun SettingsScreen(navController: NavController, settingsViewModel: SettingsViewModel) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colors.backgroundColor
@@ -21,7 +22,7 @@ fun SettingsScreen(navController: NavController) {
                 AppBar(navController = navController, title = "Settings")
             },
             content = {
-                SettingsContent()
+                SettingsContent(settingsViewModel = settingsViewModel)
             }
         )
     }

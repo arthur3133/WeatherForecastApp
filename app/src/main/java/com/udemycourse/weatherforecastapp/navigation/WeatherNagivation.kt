@@ -15,12 +15,14 @@ import com.udemycourse.weatherforecastapp.screens.settings.SettingsScreen
 import com.udemycourse.weatherforecastapp.screens.splash.SplashScreen
 import com.udemycourse.weatherforecastapp.viewmodel.FavoriteViewModel
 import com.udemycourse.weatherforecastapp.viewmodel.HomeViewModel
+import com.udemycourse.weatherforecastapp.viewmodel.SettingsViewModel
 
 @Composable
 fun WeatherNavigation() {
     val navController = rememberNavController()
     val homeViewModel: HomeViewModel = hiltViewModel()
     val favoriteViewModel: FavoriteViewModel = hiltViewModel()
+    val settingsViewModel: SettingsViewModel = hiltViewModel()
 
     NavHost(
         navController = navController, 
@@ -43,6 +45,7 @@ fun WeatherNavigation() {
                 navController = navController,
                 homeViewModel = homeViewModel,
                 favoriteViewModel = favoriteViewModel,
+                settingsViewModel = settingsViewModel,
                 city = city!!
             )
         }
@@ -60,7 +63,7 @@ fun WeatherNavigation() {
         }
 
         composable(route = WeatherScreens.SettingsScreen.name) {
-            SettingsScreen(navController = navController)
+            SettingsScreen(navController = navController, settingsViewModel = settingsViewModel)
         }
     }
 }

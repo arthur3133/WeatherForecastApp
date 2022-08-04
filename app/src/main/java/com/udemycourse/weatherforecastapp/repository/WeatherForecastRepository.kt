@@ -9,9 +9,9 @@ class WeatherForecastRepository @Inject constructor(private val weatherApi: Weat
 
     private var dataOrException: DataOrException<Weather, Boolean, Exception> = DataOrException()
 
-    suspend fun getWeatherData(city: String): DataOrException<Weather, Boolean, Exception> {
+    suspend fun getWeatherData(city: String, unit: String): DataOrException<Weather, Boolean, Exception> {
         try {
-            dataOrException.data = weatherApi.getWeatherData(city = city)
+            dataOrException.data = weatherApi.getWeatherData(city = city, units = unit)
         } catch (e: Exception) {
             dataOrException.e = e
         }
