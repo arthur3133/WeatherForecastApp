@@ -23,7 +23,6 @@ fun AboutContent() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(12.dp)
             .background(MaterialTheme.colors.backgroundColor),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally

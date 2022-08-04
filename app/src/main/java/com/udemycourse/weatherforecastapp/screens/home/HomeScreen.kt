@@ -11,12 +11,14 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.udemycourse.weatherforecastapp.ui.theme.backgroundColor
 import com.udemycourse.weatherforecastapp.ui.theme.circularProgressIndicatorColor
+import com.udemycourse.weatherforecastapp.viewmodel.FavoriteViewModel
 import com.udemycourse.weatherforecastapp.viewmodel.HomeViewModel
 
 @Composable
 fun HomeScreen(
     navController: NavController,
     homeViewModel: HomeViewModel,
+    favoriteViewModel: FavoriteViewModel,
     city: String
 ) {
     LaunchedEffect(key1 = true) {
@@ -42,7 +44,8 @@ fun HomeScreen(
                         HomeTopAppBar(
                             city = weatherData.value.data?.city?.name,
                             country = weatherData.value.data?.city?.country,
-                            navController = navController
+                            navController = navController,
+                            favoriteViewModel = favoriteViewModel
                         )
                     },
                     content = {

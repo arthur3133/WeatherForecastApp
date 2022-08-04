@@ -13,12 +13,15 @@ import com.udemycourse.weatherforecastapp.screens.home.HomeScreen
 import com.udemycourse.weatherforecastapp.screens.search.SearchScreen
 import com.udemycourse.weatherforecastapp.screens.settings.SettingsScreen
 import com.udemycourse.weatherforecastapp.screens.splash.SplashScreen
+import com.udemycourse.weatherforecastapp.viewmodel.FavoriteViewModel
 import com.udemycourse.weatherforecastapp.viewmodel.HomeViewModel
 
 @Composable
 fun WeatherNavigation() {
     val navController = rememberNavController()
     val homeViewModel: HomeViewModel = hiltViewModel()
+    val favoriteViewModel: FavoriteViewModel = hiltViewModel()
+
     NavHost(
         navController = navController, 
         startDestination = WeatherScreens.SplashScreen.name) {
@@ -39,6 +42,7 @@ fun WeatherNavigation() {
             HomeScreen(
                 navController = navController,
                 homeViewModel = homeViewModel,
+                favoriteViewModel = favoriteViewModel,
                 city = city!!
             )
         }
